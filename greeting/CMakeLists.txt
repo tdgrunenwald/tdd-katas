@@ -1,6 +1,6 @@
 project(kata)
 
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 2.9)
 
 enable_testing()
 
@@ -33,5 +33,8 @@ list(APPEND UNIT_TESTS
 ####################################################
 foreach(TEST ${UNIT_TESTS})
     add_executable(${TEST} "${CMAKE_SOURCE_DIR}/src/${TEST}.cpp")
+	target_sources(${TEST} PRIVATE
+			"${CMAKE_SOURCE_DIR}/src/greeting.cpp"
+			)
     add_test(${TEST} ${TEST})
 endforeach()
